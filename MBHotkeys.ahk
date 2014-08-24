@@ -7,6 +7,7 @@
 ; Script Function:
 ;	Template script (you can customize this template by editing "ShellNew\Template.ahk" in your Windows folder)
 ;
+#Include OddsMonkeyParser.ahk
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode, Input  ; Recommended for new scripts due to its superior speed and reliability.
@@ -322,7 +323,10 @@ ButtonCopy:
     Gui, Submit
     EnvSet, oddsmonkey_row, %om_row%
     tmp = %A_ScriptDir%\_TEMP\pyouttemp.txt
-    MsgBox %tmp%
+    ;MsgBox %tmp%
+    parser := new OddsMonkeyParser()
+    parser.Parse(om_row) 
+    return ;;;;;; QUIT NOW WHILE IN DEV!
     RunWait, python oddsmonkeycopytextparse.py "%tmp%",, Hide UseErrorLevel
     if (ErrorLevel) {
         MsgBox, Failed to parse OddsMonkey row: unhandled python error (row = "%om_row%")
