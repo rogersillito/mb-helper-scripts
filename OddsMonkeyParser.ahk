@@ -1,13 +1,3 @@
-
-
-class OddsMonkeyParser
-{
-    Parsed := 0
-    ErrorMessage := ""
-    static RowIndexMap := {0: TimeDate, 2: Event, 3: Selection, 7: Bookie, 9: BackOdds, 10: Exchange, 12: LayOdds, 13: Liquidity}
-
-    Parse(row)
-    {
 ;1	Time/Date       = TimeDate
 ;2	Blank
 ;3	Details         = Event
@@ -25,14 +15,44 @@ class OddsMonkeyParser
 ;13	Lay             = LayOdds
 ;14 	Avail.      = Liquidity
 ;15 	Age
-        rowEls := StrSplit(row, [A_Tab])
-        if (rowEls.MaxIndex() != 15)
-            throw "OddsMonkeyParser.Parse: Expected 15 row elements, got " . rowEls.MaxIndex() + 1
-        this.TimeDate := rowEls[0]
-        MsgBox % this.TimeDate
-        for index, element in rowEls 
-        {
-            ;MsgBox % "Index " . index . " = " . element 
+
+class OddsMonkeyParser
+{
+    ColMap := {TimeDate: 1, Event: 3, Selection: 4, Bookie: 8, BackOdds: 10, Exchange: 11, LayOdds: 13, Liquidity: 14}
+    ExpectedColumnCount := 15
+
+    Parsed := false
+    ErrorMessage := ""
+    ColumnValues := []
+
+    Parse(row)
+    {
+        this.ColumnValues := StrSplit(row, [A_Tab])
+        columnCount := this.ColumnValues.MaxIndex()
+        if (columnCount != this.ExpectedColumnCount)
+        {   
+            this.ErrorMessage := "OddsMonkeyParser.Parse(): Expected " . this.ExpectedColumnCount . " table columns, got " . columnCount
+            return
         }
+        this.TimeDate := this.GetElement(this.ColMap.TimeDate)
+        this.Time := this.GetTimeFrom(this.TimeDate)
+        this.Event := this.GetElement(this.ColMap.Event)
+        this.Selection := this.GetElement(this.ColMap.Selection)
+        this.BackOdds := this.GetElement(this.ColMap.BackOdds)
+        this.LayOdds := this.GetElement(this.ColMap.LayOdds)
+        this.Liquidity := SubStr(this.GetElement(this.ColMap.Liquidity), 2)
+        this.Parsed := true
+    }
+
+    GetElement(idx)
+    {
+        return this.ColumnValues[idx]
+    }
+
+    GetTimeFrom(dateTime)
+    {
+        time := SubStr(dateTime, 12)
+        StringTrimRight, trimmedTime, time, 3
+        return trimmedTime
     }
 }
