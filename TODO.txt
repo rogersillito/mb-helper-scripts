@@ -1,0 +1,8 @@
+move bookie/exchange definitions to an ahk file (create BettingSite class + list of these)
+	- remove MBHotkey_xxx.txt files + python script
+
+combine ShowOddsMonkeyGui_UM and ShowOddsMonkeyGui_CMCL
+	- dropdown option for target (UM or CMCL)
+	- or hide controls depending on target?
+	
+get OM row data BEFORE showing UI - pre-populate with OM row!
