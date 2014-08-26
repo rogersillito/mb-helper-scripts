@@ -1,1 +1,1 @@
-%_toolsdir%\autohotkey\autohotkey UT_OddsMonkeyParser.ahk
+start %_toolsdir%\autohotkey\autohotkey UT_OddsMonkeyParser.ahk
