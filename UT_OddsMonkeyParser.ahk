@@ -2,10 +2,7 @@
 #Include <Yunit\Window>
 #Include <Yunit\StdOut>
 
-#SingleInstance Force
 #Include OddsMonkeyParser.ahk
-
-Yunit.Use(YunitWindow).Test(OddsMonkeyParserTests)
 
 class OddsMonkeyParserTests
 {
@@ -25,59 +22,59 @@ class OddsMonkeyParserTests
             this.remove("SUT")
         }
 
-        Test_Parsed_is_true_when_row_is_valid()
+        Parsed_is_true_when_row_is_valid()
         {
             Yunit.assert(this.SUT.Parsed, "SUT.Parsed = false")
         }
         
-        Test_ErrorMessage_equals_empty_string()
+        ErrorMessage_equals_empty_string()
         {
             Yunit.assert(this.SUT.ErrorMessage == "", "Error message was '" . this.SUT.ErrorMessage . "'")
         }
 
-        Test_TimeDate_property_is_set()
+        TimeDate_property_is_set()
         {
             Yunit.assert(this.SUT.TimeDate == "31/08/2014 13:30:00", "TimeDate is '" . this.SUT.TimeDate . "'")
         }
 
-        Test_Time_property_is_set()
+        Time_property_is_set()
         {
             Yunit.assert(this.SUT.Time == "13:30", "Time is '" . this.SUT.Time . "'")
         }
 
-        Test_Liquidity_property_is_set()
+        Liquidity_property_is_set()
         {
             Yunit.assert(this.SUT.Liquidity == "208", "Liquidity is '" . this.SUT.Liquidity . "'")
         }
 
-        Test_LayOdds_property_is_set()
+        LayOdds_property_is_set()
         {
             Yunit.assert(this.SUT.LayOdds == "7.6", "LayOdds is '" . this.SUT.LayOdds . "'")
         }
 
-        Test_BackOdds_property_is_set()
+        BackOdds_property_is_set()
         {
             Yunit.assert(this.SUT.BackOdds == "8.5", "BackOdds is '" . this.SUT.BackOdds . "'")
         }
 
-        Test_Selection_property_is_set()
+        Selection_property_is_set()
         {
             Yunit.assert(this.SUT.Selection == "1-0", "Selection is '" . this.SUT.Selection . "'")
         }
 
-        Test_Event_property_is_set()
+        Event_property_is_set()
         {
             Yunit.assert(this.SUT.Event == "Aston Villa v Hull", "Event is '" . this.SUT.Event . "'")
         }
 
-        Test_Bookies_property_is_set_with_the_uMName_values_from_bettingSites()
+        Bookies_property_is_set_with_the_uMName_values_from_bettingSites()
         {
             Yunit.assert(this.SUT.Bookies.MaxIndex() == 2, "Bookies list length is '" . this.SUT.Bookies.MaxIndex() . "'")
             Yunit.assert(this.SUT.Bookies[1] == "_A Ladbrokes", "Bookies uMName 1 is '" . this.SUT.Bookies[1] . "'")
             Yunit.assert(this.SUT.Bookies[2] == "_B Ladbrokes", "Bookies uMName 2 is '" . this.SUT.Bookies[2] . "'")
         }
 
-        Test_Exchanges_property_is_set_with_the_uMName_values_from_bettingSites()
+        Exchanges_property_is_set_with_the_uMName_values_from_bettingSites()
         {
             Yunit.assert(this.SUT.Exchanges.MaxIndex() == 1, "Exchanges list length is '" . this.SUT.Exchanges.MaxIndex() . "'")
             Yunit.assert(this.SUT.Exchanges[1] == "Betfair", "Exchanges uMName 1 is '" . this.SUT.Exchanges[1] . "'")
@@ -92,24 +89,24 @@ class OddsMonkeyParserTests
                 this.SUT.Parse(OddsMonkeyParserTests.When_row_is_valid.Row)
             }
 
-            Test_Bookies_property_is_not_set()
+            Bookies_property_is_not_set()
             {
                 msg = expected no value
                 Yunit.assert(!this.SUT.Bookies, msg)
             }
 
-            Test_Exchanges_property_is_set_with_the_uMName_values()
+            Exchanges_property_is_set_with_the_uMName_values()
             {
                 Yunit.assert(this.SUT.Exchanges.MaxIndex() == 1, "Exchanges list length is '" . this.SUT.Exchanges.MaxIndex() . "'")
                 Yunit.assert(this.SUT.Exchanges[1] == "Betfair", "Exchanges uMName 1 is '" . this.SUT.Exchanges[1] . "'")
             }
 
-            Test_Parsed_is_false()
+            Parsed_is_false()
             {
                 Yunit.assert(!this.SUT.Parsed, "SUT.Parsed = true")
             }
             
-            Test_ErrorMessage_equals_expected()
+            ErrorMessage_equals_expected()
             {
                 expected := "OddsMonkeyParser.GetMappedUMNamesFor(): No entry found in bettingSites list for 'LADBROKES'"
                 Yunit.assert(this.SUT.ErrorMessage == expected, "Error message was '" . this.SUT.ErrorMessage . "'")
@@ -125,25 +122,25 @@ class OddsMonkeyParserTests
                 this.SUT.Parse(OddsMonkeyParserTests.When_row_is_valid.Row)
             }
 
-            Test_Exchanges_property_is_not_set()
+            Exchanges_property_is_not_set()
             {
                 msg = expected no value
                 Yunit.assert(!this.SUT.Exchanges, msg)
             }
 
-            Test_Bookies_property_is_set_with_the_uMName_values()
+            Bookies_property_is_set_with_the_uMName_values()
             {
                 Yunit.assert(this.SUT.Bookies.MaxIndex() == 2, "Bookies list length is '" . this.SUT.Bookies.MaxIndex() . "'")
                 Yunit.assert(this.SUT.Bookies[1] == "_A Ladbrokes", "Bookies uMName 1 is '" . this.SUT.Bookies[1] . "'")
                 Yunit.assert(this.SUT.Bookies[2] == "_B Ladbrokes", "Bookies uMName 2 is '" . this.SUT.Bookies[2] . "'")
             }
 
-            Test_Parsed_is_false()
+            Parsed_is_false()
             {
                 Yunit.assert(!this.SUT.Parsed, "SUT.Parsed = true")
             }
             
-            Test_ErrorMessage_equals_expected()
+            ErrorMessage_equals_expected()
             {
                 expected := "OddsMonkeyParser.GetMappedUMNamesFor(): No entry found in bettingSites list for 'BETFAIR'"
                 Yunit.assert(this.SUT.ErrorMessage == expected, "Error message was '" . this.SUT.ErrorMessage . "'")
@@ -167,18 +164,18 @@ class OddsMonkeyParserTests
             this.remove("SUT")
         }
 
-        Test_Parsed_is_false()
+        Parsed_is_false()
         {
             Yunit.assert(!this.SUT.Parsed, "SUT.Parsed = true")
         }
         
-        Test_ErrorMessage_equals_expected()
+        ErrorMessage_equals_expected()
         {
             expected := "OddsMonkeyParser.Parse(): Expected 15 table columns, got 14"
             Yunit.assert(this.SUT.ErrorMessage == expected, "Error message was '" . this.SUT.ErrorMessage . "'")
         }
 
-        Test_all_data_properties_should_be_blank()
+        all_data_properties_should_be_blank()
         {
             msg = expected no value
             Yunit.assert(!this.SUT.TimeDate, msg)
