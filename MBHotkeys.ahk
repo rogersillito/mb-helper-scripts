@@ -238,7 +238,7 @@ Return
     target := "Ultimatcher"
     preselectBookie := ""
     preselectExchange := "Smarkets"
-    preselectLabel := "ARB"
+    preselectLabel := "ARB
     preselectBackStake := "20"
     preselectBetType := "Arb"
     Gosub, CopyOddsMonkey
