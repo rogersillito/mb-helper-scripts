@@ -10,6 +10,7 @@
 #SingleInstance Force
 #Include OddsMonkeyCopier.ahk
 #Include OddsMonkeyParser.ahk
+#Include BettingSiteMappings.ahk
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode, Input  ; Recommended for new scripts due to its superior speed and reliability.
@@ -238,7 +239,7 @@ Return
     target := "Ultimatcher"
     preselectBookie := ""
     preselectExchange := "Smarkets"
-    preselectLabel := "ARB
+    preselectLabel := "ARB"
     preselectBackStake := "20"
     preselectBetType := "Arb"
     Gosub, CopyOddsMonkey
@@ -334,29 +335,23 @@ Return
 
 ButtonCopy:
     Gui, Submit
-    EnvSet, oddsmonkey_row, %om_row%
-    tmp = %A_ScriptDir%\_TEMP\pyouttemp.txt
-    throw "hello" 
-    parser := new OddsMonkeyParser()
+    parser := new OddsMonkeyParser(BettingSiteMappings)
     parser.Parse(om_row) 
-    RunWait, python oddsmonkeycopytextparse.py "%tmp%",, Hide UseErrorLevel
-    if (ErrorLevel) {
-        MsgBox, Failed to parse OddsMonkey row: unhandled python error (row = "%om_row%")
-        Return
+    MsgBox % BettingSiteMappings.MaxIndex()
+    if (!parser.Parsed) {
+        MsgBox % "Could not parse OddsMonkey row: " . parser.ErrorMessage
+        return
     }
-    FileRead, pyout, %tmp%
-    get_oddsmonkey_parsed(pyout, STATUS, error, date, event, bet, backodds, layodds)
-    if (STATUS == "ERROR") {
-        MsgBox, Failed to parse OddsMonkey row: %error%
-        Return
-    }
-    FileDelete, %tmp%
-    ;;; MsgBox %STATUS% - %pyout% - %OutputSpreadsheet%
+    date := parser.TimeDate
+    event := parser.Event
+    bet := parser.Selection
+    backodds := parser.BackOdds
+    layodds := parser.LayOdds 
     if (OutputSpreadsheet == "Ultimatcher") {
         WriteOmRowToUltimatcher(backstakeinput, date, event, bet, bookie, backodds, exchange, layodds, label, bettype)
     }
     if (OutputSpreadsheet == "CalcConsecutiveMultipleLays") {
-        WriteOmRowToCalcMulti(leginput, backstsfakeinput, date, event, bet, bookie, backodds, exchange, layodds, label, bettype)
+        WriteOmRowToCalcMulti(leginput, backstakeinput, date, event, bet, bookie, backodds, exchange, layodds, label, bettype)
     }
 Return
 
