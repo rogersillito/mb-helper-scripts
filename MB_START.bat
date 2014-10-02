@@ -7,7 +7,7 @@ START python "%_MbDir%\oddsmonkeycopytextparse.py"
 START /d %browser% "https://smarkets.com/sport/horse-racing/" "http://www.betdaq.com/UI/?siteTab=exchange" "http://sports.betfair.com/horse-racing/"
 @REM START /d %browser% "https://www.skybet.com/horse-racing" "https://odds.betsafe.com/en/"
 @REM START /d %browser% "http://www.freebets4all.com/automatcher/"
-START /d "%_MbDir%" MBHotkeys.ahk
+START /d MBHotkeys.ahk
 START /d "%_MbDir%" Ultimatcher3.08.xls
 @REM START /d "%_MbDir%" CalcConsecutiveMultipleLays.xlsm
 @REM pause
