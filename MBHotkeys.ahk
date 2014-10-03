@@ -158,22 +158,22 @@ Return
 <^>!9:: 
     SetDefaults()
     target := "CalcConsecutiveMultipleLays"
-    preselectBookie := "Ladbrokes"
+    preselectBookie := "_K Ladbrokes"
     preselectExchange := "Smarkets"
     preselectLabel := "Ladbrokes 5 Q"
     preselectBackStake := "10"
     preselectLeg := "1"
-    preselectBetType := "Qualifier"
+    preselectBetType := "Qualifier/Arb"
     Gosub, CopyOddsMonkey
 Return
 
 <^>!1:: 
     SetDefaults()
     target := "Ultimatcher"
-    preselectBookie := "_M 188Bet"
-    preselectExchange := "Smarkets"
-    preselectLabel := "188Bet TRIPLE75"
-    preselectBackStake := "25"
+    preselectBookie := "Ladbrokes"
+    preselectExchange := "Betfair"
+    preselectLabel := "Lad Donc123 Q"
+    preselectBackStake := "10"
     preselectBetType := "Qualifier"
     Gosub, CopyOddsMonkey
 Return
@@ -337,7 +337,6 @@ ButtonCopy:
     Gui, Submit
     parser := new OddsMonkeyParser(BettingSiteMappings)
     parser.Parse(om_row) 
-    MsgBox % BettingSiteMappings.MaxIndex()
     if (!parser.Parsed) {
         MsgBox % "Could not parse OddsMonkey row: " . parser.ErrorMessage
         return

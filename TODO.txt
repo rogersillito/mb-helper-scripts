@@ -6,3 +6,11 @@ combine ShowOddsMonkeyGui_UM and ShowOddsMonkeyGui_CMCL
 	- or hide controls depending on target?
 	
 get OM row data BEFORE showing UI - pre-populate with OM row!
+
+ditch drop-down for "Label" - assemble label from bookie + [label] + bettype (Q/F)
+
+change calc multi to be Qualifier instead of Qualifier/Arb (so bet types are same on both excel sheets)
+
+tick box for horses (append time if ticked)
+
+if multiple accounts per bookie, drop-down defaults to empty (and fails if submitted empty) - stops recording against wrong account
