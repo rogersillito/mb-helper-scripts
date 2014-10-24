@@ -14,3 +14,22 @@ change calc multi to be Qualifier instead of Qualifier/Arb (so bet types are sam
 tick box for horses (append time if ticked)
 
 if multiple accounts per bookie, drop-down defaults to empty (and fails if submitted empty) - stops recording against wrong account
+
+--------
+DO ODDSMONKEY COPYING WITH A CHROME EXTENSION?
+
+once extension is active, use a content script to respond to a oddsmonkey row click?
+https://groups.google.com/a/chromium.org/forum/#!topic/chromium-extensions/2Cda11UEOX0
+
+then use jquery to parse row:
+e.g. get all sport types for matches on current page:
+$('.sportLogo').each(function(i, el) { console.log($(el).attr('title')); })
+
+finally get data into autohotkey...
+via a file?
+or clipboard?
+copy/paste in a chrome extension:
+http://stackoverflow.com/questions/7144702/the-proper-use-of-execcommandpaste-in-a-chrome-extension/7147192#7147192
+
+maybe interchange data in json format?
+https://github.com/cocobelgica/AutoHotkey-JSON
