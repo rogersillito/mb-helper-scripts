@@ -56,6 +56,9 @@ url_lookup(bookie) {
 	if (bookie == "Ladbrokes") {
 		Return "https://sports.ladbrokes.com/en-gb/"
 	}
+	if (bookie == "Matchbook") {
+		Return "https://www.matchbook.com/"
+	}
 	if (bookie == "NordicBet") {
 		Return "http://www.nordicbet.com/eng/sportsbook"
 	}

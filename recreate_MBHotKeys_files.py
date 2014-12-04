@@ -3,6 +3,7 @@ exchanges["Betdaq"] = "http://www.betdaq.com/UI/?siteTab=exchange"
 exchanges["_M Betfair"] = "http://www.betfair.com/"
 exchanges["Betfair"] = "http://www.betfair.com/"
 exchanges["Smarkets"] = "https://smarkets.com/"
+exchanges["Matchbook"] = "https://www.matchbook.com/"
 
 bookies = {}
 bookies["10Bet"] = "http://www.10bet.com/sports/soccer/"
