@@ -13,4 +13,5 @@ BettingSiteMappings.Insert({"OMName": "LADBROKES", "UMNames": ["Ladbrokes", "_K 
 BettingSiteMappings.Insert({"OMName": "SKYBET", "UMNames": ["Skybet"]})
 BettingSiteMappings.Insert({"OMName": "CORAL", "UMNames": ["Coral"]})
 BettingSiteMappings.Insert({"OMName": "MATCHBOOK", "UMNames": ["Matchbook"]})
+BettingSiteMappings.Insert({"OMName": "BETFRED", "UMNames": ["Betfred"]})
 ;BettingSiteMappings.Insert({"OMName": "", "UMNames": ""})
