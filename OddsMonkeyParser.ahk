@@ -46,8 +46,8 @@ class OddsMonkeyParser
         this.BackOdds := this.GetElement(this.ColMap.BackOdds)
         this.LayOdds := this.GetElement(this.ColMap.LayOdds)
         this.Liquidity := SubStr(this.GetElement(this.ColMap.Liquidity), 2)
-        this.Bookies := this.GetMappedUMNamesFor(this.ColMap.Bookie)
-        this.Exchanges := this.GetMappedUMNamesFor(this.ColMap.Exchange)
+        ;this.Bookies := this.GetMappedUMNamesFor(this.ColMap.Bookie)
+        ;this.Exchanges := this.GetMappedUMNamesFor(this.ColMap.Exchange)
         if (this.ErrorMessage != "")
             return
         this.Parsed := true
