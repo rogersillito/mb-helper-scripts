@@ -192,11 +192,11 @@ Return
 <^>!3:: 
     SetDefaults()
     target := "Ultimatcher"
-    preselectBookie := "Coral"
-    preselectExchange := "Betfair"
-    preselectLabel := "Coral 50 FREE"
-    preselectBackStake := "50"
-    preselectBetType := "Free SNR"
+    preselectBookie := "_K Bet365"
+    preselectExchange := "Smarkets"
+    preselectLabel := "K Bet365 Q"
+    preselectBackStake := "40"
+    preselectBetType := "Qualifier"
     Gosub, CopyOddsMonkey
 Return
 
@@ -243,6 +243,10 @@ Return
     preselectBackStake := "20"
     preselectBetType := "Arb"
     Gosub, CopyOddsMonkey
+Return
+
+<^>!m:: 
+    Gosub, MatchbookCalc
 Return
     
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -354,10 +358,42 @@ ButtonCopy:
     }
 Return
 
+MatchbookCalc:
+    Gui, Destroy
+    Gui, Add, Text, w80, Lay stake £:
+    Gui, Add, Text, w80, Lay odds:
+    Gui, Add, Text, w80, Commission `%:
+    Gui, Add, Button, w80 default, Show Commission on Lose ; => label ButtonCopy
+    Gui, Add, Edit, w50 vlaystake ym, %laystake%
+    Gui, Add, Edit, w50 vlayodds, %layodds%
+    if (!matchbook_commission)
+    {
+        matchbook_commission := 1.15
+    }
+    Gui, Add, Edit, w30 vmatchbook_commission, %matchbook_commission%
+    if (matchbook_commission_result)
+    {
+        Gui, font, cRed
+        Gui, Add, Text, w180, Charge when lay loses = %matchbook_commission_result%
+        Gui, font
+    }
+    Gui, -MinimizeBox -MaximizeBox
+    Gui, Show, w300, Matchbook commission on loss
+Return
+
+ButtonShowCommissiononLose:
+    Gui, Submit
+    c := matchbook_calc(laystake, layodds, matchbook_commission)
+    matchbook_commission_result := format_pounds(c)
+    Gosub, MatchbookCalc
+Return
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 #Include %A_ScriptDir%
 #Include bookie_url_lookup.ahk
+#Include matchbook_calc.ahk
 
 SetDefaults()
 {
