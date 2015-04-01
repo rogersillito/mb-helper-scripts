@@ -200,6 +200,17 @@ Return
     Gosub, CopyOddsMonkey
 Return
 
+<^>!8:: 
+    SetDefaults()
+    target := "Ultimatcher"
+    preselectBookie := "_K 888sport"
+    preselectExchange := "Smarkets"
+    preselectLabel := "K 888sport Q"
+    preselectBackStake := "10"
+    preselectBetType := "Qualifier"
+    Gosub, CopyOddsMonkey
+Return
+
 <^>!s:: 
     SetDefaults()
     target := "Ultimatcher"
