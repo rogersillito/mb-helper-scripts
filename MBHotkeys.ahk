@@ -222,6 +222,17 @@ Return
     Gosub, CopyOddsMonkey
 Return
 
+<^>!p:: 
+    SetDefaults()
+    target := "Ultimatcher"
+    preselectBookie := "_K Paddy Power"
+    preselectExchange := "Smarkets"
+    preselectLabel := "PP Q"
+    preselectBackStake := "50"
+    preselectBetType := "Qualifier"
+    Gosub, CopyOddsMonkey
+Return
+
 <^>!0:: 
     SetDefaults()
     target := "CalcConsecutiveMultipleLays"
