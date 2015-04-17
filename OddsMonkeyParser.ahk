@@ -1,19 +1,21 @@
 ;;;;; html row contents from copying an oddsmonkey row from Chrome ;;;;;
 ;1   Time/Date       = TimeDate
-;2   Blank
+;2   [blank]
 ;3   Details         = Event
 ;4   Bet             = Selection
 ;5   Type
 ;6   Rating
 ;7   [blank]
-;8   Bookmaker	     = Bookie      format:  <b>BETVICTOR</b><br /><br />£25 FREE BET<br /><br /> 
-;9   [blank]
-;10  Back            = BackOdds
-;11  Exchange		 = Exchange    format:  <b>BETFAIR</b><br /><br />£20 FREE BET PLUS UPTO £1000 CASHBACK<br /><br />
-;12  [exchange link]
-;13  Lay             = LayOdds
-;14  Avail.          = Liquidity
-;15  Age
+;8   [blank]
+;9   Bookmaker	     = Bookie      format:  <b>BETVICTOR</b><br /><br />£25 FREE BET<br /><br /> 
+;10  [blank]
+;11  Back            = BackOdds
+;12  [blank]
+;13  Exchange		 = Exchange    format:  <b>BETFAIR</b><br /><br />£20 FREE BET PLUS UPTO £1000 CASHBACK<br /><br />
+;14  [exchange link]
+;15  Lay             = LayOdds
+;16  Avail.          = Liquidity
+;17  Age
 
 class OddsMonkeyParser
 {
@@ -23,8 +25,8 @@ class OddsMonkeyParser
         this.BettingSites := bettingSites
     }
 
-    ColMap := {TimeDate: 1, Event: 3, Selection: 4, Bookie: 8, BackOdds: 10, Exchange: 11, LayOdds: 13, Liquidity: 14}
-    ExpectedColumnCount := 15
+    ColMap := {TimeDate: 1, Event: 3, Selection: 4, Bookie: 9, BackOdds: 11, Exchange: 13, LayOdds: 15, Liquidity: 16}
+    ExpectedColumnCount := 17
 
     Parsed := false
     ErrorMessage := ""

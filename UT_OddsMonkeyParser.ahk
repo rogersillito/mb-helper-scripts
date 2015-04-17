@@ -8,7 +8,7 @@ class OddsMonkeyParserTests
 {
     class When_row_is_valid
     {
-        static Row := "31/08/2014 13:30:00		Aston Villa v Hull	1-0	Correct Score	106.95		<b>LADBROKES</b><br /><br />UP TO £100 FREE BET (CODE F50)<br /><br />	Direct link to event on Bookmaker website	8.5	<b>BETFAIR</b><br /><br />£20 FREE BET PLUS UPTO £1000 CASHBACK<br /><br />	Direct link to event on Exchange website	7.6	£208	1.8"
+        static Row := "31/08/2014 13:30:00		Aston Villa v Hull	1-0	Correct Score	106.95		 	Ladbrokes	Direct link to event on Bookmaker website	8.5	 	Betfair	Direct link to event on Exchange website	7.6	£208	1.8"
 
         Begin()
         {
@@ -171,7 +171,7 @@ class OddsMonkeyParserTests
         
         ErrorMessage_equals_expected()
         {
-            expected := "OddsMonkeyParser.Parse(): Expected 15 table columns, got 14"
+            expected := "OddsMonkeyParser.Parse(): Expected 17 table columns, got 14"
             Yunit.assert(this.SUT.ErrorMessage == expected, "Error message was '" . this.SUT.ErrorMessage . "'")
         }
 

@@ -5,8 +5,17 @@ url_lookup(bookie) {
 	if (bookie == "188Bet") {
 		Return "http://www.188bet.com/en-gb/sports/football/select-competition/1x2"
 	}
+	if (bookie == "_K 888bet") {
+		Return "http://www.888sport.com/bet/"
+	}
+	if (bookie == "_K Bet365") {
+		Return "http://www.bet365.com/home/FlashGen4/WebConsoleApp.asp"
+	}
 	if (bookie == "_K Ladbrokes") {
 		Return "http://sportsbeta.ladbrokes.com/?view-odd=Decimal"
+	}
+	if (bookie == "_K Paddy Power") {
+		Return "http://www.paddypower.com/football/football-matches"
 	}
 	if (bookie == "_M 188Bet") {
 		Return "http://www.188bet.com/en-gb/sports/football/select-competition/1x2"
@@ -58,9 +67,6 @@ url_lookup(bookie) {
 	}
 	if (bookie == "Matchbook") {
 		Return "https://www.matchbook.com/"
-	}
-	if (bookie == "NordicBet") {
-		Return "http://www.nordicbet.com/eng/sportsbook"
 	}
 	if (bookie == "Skybet") {
 		Return "https://www.skybet.com/horse-racing"
