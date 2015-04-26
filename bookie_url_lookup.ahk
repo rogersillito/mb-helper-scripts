@@ -5,7 +5,7 @@ url_lookup(bookie) {
 	if (bookie == "188Bet") {
 		Return "http://www.188bet.com/en-gb/sports/football/select-competition/1x2"
 	}
-	if (bookie == "_K 888bet") {
+	if (bookie == "_K 888sport") {
 		Return "http://www.888sport.com/bet/"
 	}
 	if (bookie == "_K Bet365") {
