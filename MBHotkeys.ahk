@@ -167,6 +167,18 @@ Return
     Gosub, CopyOddsMonkey
 Return
 
+<^>!w:: 
+    SetDefaults()
+    target := "CalcConsecutiveMultipleLays"
+    preselectBookie := "_K Winner"
+    preselectExchange := "Smarkets"
+    preselectLabel := "K Winner FREE"
+    preselectBackStake := "10"
+    preselectLeg := "1"
+    preselectBetType := "Free SNR"
+    Gosub, CopyOddsMonkey
+Return
+
 <^>!1:: 
     SetDefaults()
     target := "Ultimatcher"
